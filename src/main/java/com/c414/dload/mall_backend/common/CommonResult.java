@@ -24,4 +24,11 @@ public class CommonResult implements Serializable {
         return new CommonResult(false, 403, msg, null);
     }
 
+    public static CommonResult forbidden(String message) {
+        return new CommonResult(false, 402, message, null);
+    }
+
+    public static CommonResult unauthorized(String message) {
+        return new CommonResult(false, 402, message, null);
+    }
 }
