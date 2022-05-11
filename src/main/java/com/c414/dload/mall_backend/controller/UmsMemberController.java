@@ -1,6 +1,6 @@
 package com.c414.dload.mall_backend.controller;
 
-import com.c414.dload.mall_backend.entity.CommonResult;
+import com.c414.dload.mall_backend.common.CommonResult;
 import com.c414.dload.mall_backend.service.IUmsMemberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

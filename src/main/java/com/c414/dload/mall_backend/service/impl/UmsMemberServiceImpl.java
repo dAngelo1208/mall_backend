@@ -1,6 +1,6 @@
 package com.c414.dload.mall_backend.service.impl;
 
-import com.c414.dload.mall_backend.entity.CommonResult;
+import com.c414.dload.mall_backend.common.CommonResult;
 import com.c414.dload.mall_backend.service.IRedisService;
 import com.c414.dload.mall_backend.service.IUmsMemberService;
 import org.springframework.beans.factory.annotation.Value;

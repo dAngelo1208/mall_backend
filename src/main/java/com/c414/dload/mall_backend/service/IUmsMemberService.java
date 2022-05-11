@@ -1,6 +1,6 @@
 package com.c414.dload.mall_backend.service;
 
-import com.c414.dload.mall_backend.entity.CommonResult;
+import com.c414.dload.mall_backend.common.CommonResult;
 
 public interface IUmsMemberService {
 

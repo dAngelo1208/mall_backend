@@ -1,4 +1,4 @@
-package com.c414.dload.mall_backend.entity;
+package com.c414.dload.mall_backend.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
