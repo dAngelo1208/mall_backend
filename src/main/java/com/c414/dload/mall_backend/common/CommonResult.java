@@ -20,6 +20,14 @@ public class CommonResult implements Serializable {
         return new CommonResult(true, 200, msg, data);
     }
 
+    public static CommonResult success(Object data) {
+        return new CommonResult(true, 200, "success", data);
+    }
+
+    public static CommonResult failed() {
+        return new CommonResult(false, 403, "failed", null);
+    }
+
     public static CommonResult failed(String msg) {
         return new CommonResult(false, 403, msg, null);
     }
@@ -30,5 +38,9 @@ public class CommonResult implements Serializable {
 
     public static CommonResult unauthorized(String message) {
         return new CommonResult(false, 402, message, null);
+    }
+
+    public static CommonResult validFailed(String msg) {
+        return new CommonResult(false, 402, msg, null);
     }
 }

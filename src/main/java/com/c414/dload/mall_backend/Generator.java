@@ -15,15 +15,15 @@ public class Generator {
                     builder.author("dload") // 设置作者
                             .enableSwagger() // 开启 swagger 模式
                             .fileOverride() // 覆盖已生成文件
-                            .outputDir("/Users/dload/Library/Mobile Documents/com~apple~CloudDocs/javaPojo/mall_backend/src/main/java"); // 指定输出目录
+                            .outputDir("E:\\javaPojo\\mall_backend\\src\\main\\java"); // 指定输出目录
                 })
                 .packageConfig(builder -> {
                     builder.parent("com.c414.dload.mall_backend") // 设置父包名
                             .moduleName("") // 设置父包模块名
-                            .pathInfo(Collections.singletonMap(OutputFile.mapperXml, "/Users/dload/Library/Mobile Documents/com~apple~CloudDocs/javaPojo/mall_backend/src/main/resources/mapper")); // 设置mapperXml生成路径
+                            .pathInfo(Collections.singletonMap(OutputFile.mapperXml, "E:\\javaPojo\\mall_backend\\src\\main\\resources\\mapper")); // 设置mapperXml生成路径
                 })
                 .strategyConfig(builder -> {
-                    builder.addInclude("ums_permission") // 设置需要生成的表名
+                    builder.addInclude("ums_admin_role_relation") // 设置需要生成的表名
                             .addTablePrefix("") // 设置过滤表前缀
                             .entityBuilder()
                             .enableLombok()

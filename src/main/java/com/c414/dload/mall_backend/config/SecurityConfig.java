@@ -3,9 +3,10 @@ package com.c414.dload.mall_backend.config;
 import com.c414.dload.mall_backend.component.JwtAuthenticationTokenFilter;
 import com.c414.dload.mall_backend.component.RestAuthenticationEntryPoint;
 import com.c414.dload.mall_backend.component.RestfulAccessDeniedHandler;
-import com.c414.dload.mall_backend.entity.UmsAdminUserDetails;
+import com.c414.dload.mall_backend.entity.UmsAdmin;
+import com.c414.dload.mall_backend.entity.AdminUserDetails;
 import com.c414.dload.mall_backend.entity.UmsPermission;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.c414.dload.mall_backend.service.impl.UmsAdminServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -16,9 +17,14 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 
 /**
@@ -29,11 +35,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-//    @Autowired
-//    private UmsAdminService adminService;
-    @Autowired
+    @Resource
+    private UmsAdminServiceImpl adminService;
+    @Resource
     private RestfulAccessDeniedHandler restfulAccessDeniedHandler;
-    @Autowired
+    @Resource
     private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
 
     @Override
@@ -84,18 +90,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        //获取登录用户信息
-//        return username -> {
-//            UmsAdmin admin = adminService.getAdminByUsername(username);
-//            if (admin != null) {
-//                List<UmsPermission> permissionList = adminService.getPermissionList(admin.getId());
-//                return new AdminUserDetails(admin, permissionList);
-//            }
-//            throw new UsernameNotFoundException("用户名或密码错误");
-//        };
-//    }
+    @Bean
+    public UserDetailsService userDetailsService() {
+        //获取登录用户信息
+        return username -> {
+            UmsAdmin admin = adminService.getAdminByUsername(username);
+            if (admin != null) {
+                List<UmsPermission> permissionList = adminService.getPermissionList(admin.getId());
+                return new AdminUserDetails(admin, permissionList);
+            }
+            throw new UsernameNotFoundException("用户名或密码错误");
+        };
+    }
 
     @Bean
     public JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter() {

@@ -13,6 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2022-05-11
  */
 @Mapper
-public interface AdminMapper extends BaseMapper<UmsAdmin> {
+public interface UmsAdminMapper extends BaseMapper<UmsAdmin> {
 
 }

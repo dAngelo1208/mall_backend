@@ -3,8 +3,10 @@ package com.c414.dload.mall_backend.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -46,10 +48,10 @@ public class UmsAdmin implements Serializable {
     private String note;
 
     @ApiModelProperty("创建时间")
-    private LocalDateTime createTime;
+    private Date createTime;
 
     @ApiModelProperty("最后登录时间")
-    private LocalDateTime loginTime;
+    private Date loginTime;
 
     @ApiModelProperty("帐号启用状态：0->禁用；1->启用")
     private Integer status;
