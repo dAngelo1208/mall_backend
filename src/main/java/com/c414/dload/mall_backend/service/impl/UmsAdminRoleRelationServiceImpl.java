@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author dload
- * @since 2022-05-12
+ * @since 2022-05-13
  */
 @Service
 public class UmsAdminRoleRelationServiceImpl extends ServiceImpl<UmsAdminRoleRelationMapper, UmsAdminRoleRelation> implements IUmsAdminRoleRelationService {

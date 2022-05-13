@@ -14,7 +14,7 @@
         id, admin_id, role_id
     </sql>
 
-    <select id="selectPermission" resultType="com.c414.dload.mall_backend.entity.UmsPermission">
+    <select id="getPermissionList" resultType="com.c414.dload.mall_backend.entity.UmsPermission">
         SELECT p.*
         FROM ums_admin_role_relation ar
                  LEFT JOIN ums_role r ON ar.role_id = r.id

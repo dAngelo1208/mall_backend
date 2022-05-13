@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author dload
- * @since 2022-05-12
+ * @since 2022-05-13
  */
 public interface IUmsAdminRoleRelationService extends IService<UmsAdminRoleRelation> {
 

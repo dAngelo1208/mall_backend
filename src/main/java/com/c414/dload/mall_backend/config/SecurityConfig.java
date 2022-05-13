@@ -7,6 +7,7 @@ import com.c414.dload.mall_backend.entity.UmsAdmin;
 import com.c414.dload.mall_backend.entity.AdminUserDetails;
 import com.c414.dload.mall_backend.entity.UmsPermission;
 import com.c414.dload.mall_backend.service.impl.UmsAdminServiceImpl;
+import org.junit.Test;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

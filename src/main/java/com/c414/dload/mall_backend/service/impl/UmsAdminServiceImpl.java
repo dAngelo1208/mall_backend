@@ -9,9 +9,11 @@ import com.c414.dload.mall_backend.mapper.UmsAdminMapper;
 import com.c414.dload.mall_backend.mapper.UmsAdminRoleRelationMapper;
 import com.c414.dload.mall_backend.service.IUmsAdminService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
@@ -92,7 +94,7 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
         String token = null;
         try {
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-            if (!passwordEncoder.matches(userDetails.getPassword(), password)) {
+            if (!passwordEncoder.matches(password, userDetails.getPassword())) {
                 throw new BadCredentialsException("密码不正确");
             }
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
@@ -107,6 +109,6 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
 
     @Override
     public List<UmsPermission> getPermissionList(Long adminId) {
-        return umsAdminRoleRelationMapper.selectPermission(adminId);
+        return umsAdminRoleRelationMapper.getPermissionList(adminId);
     }
 }
