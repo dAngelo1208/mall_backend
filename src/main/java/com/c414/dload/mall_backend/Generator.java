@@ -23,16 +23,22 @@ public class Generator {
                             .pathInfo(Collections.singletonMap(OutputFile.mapperXml, "E:\\javaPojo\\mall_backend\\src\\main\\resources\\mapper")); // 设置mapperXml生成路径
                 })
                 .strategyConfig(builder -> {
-                    builder.addInclude("ums_admin_role_relation") // 设置需要生成的表名
-                            .addTablePrefix("") // 设置过滤表前缀
+                    builder.addInclude("pms_product_attribute_value") // 设置需要生成的表名
+                            .addTablePrefix("pms_") // 设置过滤表前缀
                             .entityBuilder()
                             .enableLombok()
                             .controllerBuilder()
                             .enableRestStyle()
+                            .formatFileName("EsProductAttributeValueController")
+                            .serviceBuilder()
+                            .formatServiceFileName("IEsProductAttributeValueService")
+                            .formatServiceImplFileName("EsProductAttributeValueServiceImpl")
                             .mapperBuilder()
                             .enableBaseColumnList()
                             .enableBaseResultMap()
-                            .enableMapperAnnotation();
+                            .enableMapperAnnotation()
+                            .formatMapperFileName("EsProductAttributeValueMapper")
+                            .formatXmlFileName("EsProductAttributeValueMapper");
                 })
                 .templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板
                 .execute();
