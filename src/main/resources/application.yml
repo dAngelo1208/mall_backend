@@ -43,3 +43,9 @@ jwt:
   expiration: 604800 #JWT的超期限时间(60*60*24)
   tokenHead: Bearer  #JWT负载中拿到开头
 
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+

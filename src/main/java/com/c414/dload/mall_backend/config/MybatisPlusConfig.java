@@ -12,10 +12,4 @@ import org.springframework.context.annotation.Configuration;
 @MapperScan("com.c414.dload.mall_backend.mapper")
 public class MybatisPlusConfig {
 
-    @Bean
-    public MybatisPlusInterceptor mybatisPlusInterceptor() {
-        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
-        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.H2));
-        return interceptor;
-    }
 }

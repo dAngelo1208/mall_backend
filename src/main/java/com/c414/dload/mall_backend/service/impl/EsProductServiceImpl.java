@@ -7,6 +7,8 @@ import com.c414.dload.mall_backend.mapper.EsProductMapper;
 import com.c414.dload.mall_backend.service.IEsProductService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -83,6 +85,7 @@ public class EsProductServiceImpl extends ServiceImpl<EsProductMapper, EsProduct
 
     @Override
     public Page<EsProduct> search(String keyword, Integer pageNum, Integer pageSize) {
-        return null;
+        Pageable pageable = PageRequest.of(pageNum, pageSize);
+        return esProductRepository.findByNameOrSubTitleOrKeywords(keyword, keyword, keyword, pageable);
     }
 }
